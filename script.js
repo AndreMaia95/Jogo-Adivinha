@@ -183,11 +183,11 @@ reset2Button.addEventListener("click", function () {
   display.textContent = getHiddenWord(word);
   guessInput.disabled = false;
   guessButton.disabled = false;
+  guessInput.value = "";
   attempts = 0;
   attemptCount.textContent = attempts;
   message.textContent = "";
   reset2Button.style.display = "none";
-  guessInput.value = "";
 });
 
 function getRandomWord(words) {
