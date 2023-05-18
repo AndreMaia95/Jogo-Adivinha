@@ -1,0 +1,109 @@
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background: #6e5c62;
+}
+.main-container {
+  background: #615458;
+  border-radius: 10px;
+  max-width: 500px;
+  max-height: 500px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 50px;
+  position: relative;
+}
+.main-container h1 {
+  color: white;
+  font-size: 40px;
+  margin-bottom: 140px;
+  margin: 0;
+}
+.container-flex {
+  display: flex;
+  position: absolute;
+  bottom: 50px;
+}
+.input-guess {
+  width: 250px;
+  height: 36px;
+  font-size: 16px;
+  border-radius: 5px 0px 0px 5px;
+  outline: none;
+  padding: 0px 10px;
+  margin-top: 10px;
+  border: none;
+}
+.btn-guess {
+  width: 80px;
+  height: 36px;
+  font-size: 16px;
+  border-radius: 0px 5px 5px 0px;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  background: #0093ff;
+  color: white;
+}
+.btn-guess:hover {
+  border: 2px solid #ffffff;
+}
+#display {
+  font-size: 24px;
+  position: absolute;
+  top: 45%;
+  color: white;
+}
+.green {
+  color: green;
+}
+.box {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.modal-title {
+  font-size: 10rem;
+  color: white;
+}
+.modal-text {
+  color: white;
+}
+.modal-newgame {
+  width: 200px;
+  height: 40px;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.container-message {
+  position: absolute;
+}

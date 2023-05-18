@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tenta Adivinhar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../Styles/style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <h1>Tenta adivinhar o país!</h1>
+      <div id="display"></div>
+      <div class="container-flex">
+        <input
+          placeholder="Escreve aqui..."
+          class="input-guess"
+          type="text"
+          id="guessInput"
+        />
+        <button class="btn-guess" id="guessButton">Enter</button>
+      </div>
+      <button id="resetButton" style="display: none">Novo Jogo</button>
+    </div>
+
+    <div id="modal" class="modal">
+      <p class="modal-title">Ganhaste!!</p>
+      <p class="modal-text">
+        Número de tentativas: <span id="attemptCount"></span>
+      </p>
+      <button id="reset2Button" class="modal-newgame" style="display: none">
+        Novo Jogo
+      </button>
+    </div>
+
+    <script src="../Javascript/script.js" defer></script>
+  </body>
+</html>
