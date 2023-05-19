@@ -137,99 +137,36 @@ var words = [
 ];
 
 var word = getRandomWord(words); // Palavra aleatória
+var attempts = 0;
+
+//Variáveis da interface do jogador
 var display = document.getElementById("display");
 var guessInput = document.getElementById("guessInput");
 var guessButton = document.getElementById("guessButton");
 var attemptCount = document.getElementById("attemptCount");
-var message = document.getElementById("message");
 var reset2Button = document.getElementById("reset2Button");
-var attempts = 0;
 var modal = document.getElementById("modal");
 
+//Evento do botão do menu
 const menuButton = document.getElementById("menuButton");
 const menuContent = document.getElementById("menuContent");
 
-menuButton.addEventListener("click", () => {
-  menuContent.style.display =
-    menuContent.style.display === "none" ? "flex" : "none";
-  menuButton.classList.toggle("active");
-  menuButton.style.backgroundColor = menuButton.classList.contains("active")
-    ? "#615458"
-    : "#6e5c62";
-});
-
-document.addEventListener("click", (event) => {
-  if (
-    !menuButton.contains(event.target) &&
-    !menuContent.contains(event.target)
-  ) {
-    menuContent.style.display = "none";
-    menuButton.classList.remove("active");
-    menuButton.style.backgroundColor = "#6e5c62";
-  }
-});
-display.textContent = getHiddenWord(word);
+menuButton.addEventListener("click", toggleMenu);
+document.addEventListener("click", closeMenu);
 
 guessInput.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
-    var guess = guessInput.value.trim();
-
-    if (guess === "") {
-      message.textContent = "Please enter a word!";
-      return;
-    }
-
-    attempts++;
-
-    if (guess.toLowerCase() === word.toLowerCase()) {
-      display.textContent = word; // Exibe a palavra correta
-      display.classList.add("green"); // Exibe a palavra correta com a cor verde
-      reset2Button.style.display = "block"; // Exibe o botão de reset
-      guessInput.disabled = true; // O input fica disabled quando o utilizador acerta a palavra
-      guessButton.disabled = true; // O botão fica disabled quando o utilizador acerta a palavra
-      modal.style.display = "flex";
-      document.getElementById("attemptCount").textContent = attempts;
-    } else {
-      var matchedLetters = getMatchedLetters(word, guess);
-      display.textContent = matchedLetters;
-      attemptCount.textContent = attempts;
-
-      guessInput.value = "";
-      guessInput.focus();
-    }
+    handleGuess();
   }
 });
 
-guessButton.addEventListener("click", function () {
-  var guess = guessInput.value.trim();
+guessButton.addEventListener("click", handleGuess);
 
-  if (guess === "") {
-    message.textContent = "Please enter a word!";
-    return;
-  }
+reset2Button.addEventListener("click", resetGame);
 
-  attempts++;
+initializeGame();
 
-  if (guess.toLowerCase() === word.toLowerCase()) {
-    display.textContent = word; // Exibe a palavra correta
-    display.classList.add("green"); // Exibe a palavra correta com a cor verde
-    reset2Button.style.display = "block"; // Exibe o botão de reset
-    guessInput.disabled = true; // O input fica disabled quando o utilizador acerta a palavra
-    guessButton.disabled = true; // O botão fica disabled quando o utilizador acerta a palavra
-    // código para abrir o modal
-    modal.style.display = "flex";
-    document.getElementById("attemptCount").textContent = attempts;
-  } else {
-    var matchedLetters = getMatchedLetters(word, guess);
-    display.textContent = matchedLetters;
-    attemptCount.textContent = attempts;
-
-    guessInput.value = "";
-    guessInput.focus();
-  }
-});
-
-reset2Button.addEventListener("click", function () {
+function initializeGame() {
   modal.style.display = "none";
   word = getRandomWord(words);
   display.textContent = getHiddenWord(word);
@@ -238,9 +175,39 @@ reset2Button.addEventListener("click", function () {
   guessInput.value = "";
   attempts = 0;
   attemptCount.textContent = attempts;
-  message.textContent = "";
   reset2Button.style.display = "none";
-});
+}
+
+function handleGuess() {
+  var guess = guessInput.value.trim();
+
+  attempts++;
+
+  if (guess.toLowerCase() === word.toLowerCase()) {
+    displayCorrectGuess();
+  } else {
+    var matchedLetters = getMatchedLetters(word, guess);
+    display.textContent = matchedLetters;
+    attemptCount.textContent = attempts;
+    guessInput.value = "";
+    guessInput.focus();
+  }
+}
+
+function displayCorrectGuess() {
+  display.textContent = word; // Exibe a palavra correta
+  display.classList.add("green"); // Exibe a palavra correta com a cor verde
+  reset2Button.style.display = "block"; // Exibe o botão de reset
+  guessInput.disabled = true; // O input fica disabled quando o utilizador acerta a palavra
+  guessButton.disabled = true; // O botão fica disabled quando o utilizador acerta a palavra
+  modal.style.display = "flex";
+  document.getElementById("attemptCount").textContent = attempts;
+}
+
+function resetGame() {
+  modal.style.display = "none";
+  initializeGame();
+}
 
 function getRandomWord(words) {
   var index = Math.floor(Math.random() * words.length);
@@ -268,4 +235,26 @@ function getMatchedLetters(word, guess) {
     }
   }
   return matched;
+}
+
+function toggleMenu() {
+  menuContent.style.display =
+    menuContent.style.display === "none" ? "flex" : "none";
+  menuButton.classList.toggle("active");
+  menuButton.style.backgroundColor = menuButton.classList.contains("active")
+    ? "#615458"
+    : "#6e5c62";
+}
+
+function closeMenu() {
+  document.addEventListener("click", (event) => {
+    if (
+      !menuButton.contains(event.target) &&
+      !menuContent.contains(event.target)
+    ) {
+      menuContent.style.display = "none";
+      menuButton.classList.remove("active");
+      menuButton.style.backgroundColor = "#6e5c62";
+    }
+  });
 }
