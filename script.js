@@ -148,6 +148,36 @@ var modal = document.getElementById("modal");
 
 display.textContent = getHiddenWord(word);
 
+guessInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    var guess = guessInput.value.trim();
+
+    if (guess === "") {
+      message.textContent = "Please enter a word!";
+      return;
+    }
+
+    attempts++;
+
+    if (guess.toLowerCase() === word.toLowerCase()) {
+      display.textContent = word; // Exibe a palavra correta
+      display.classList.add("green"); // Exibe a palavra correta com a cor verde
+      reset2Button.style.display = "block"; // Exibe o botão de reset
+      guessInput.disabled = true; // O input fica disabled quando o utilizador acerta a palavra
+      guessButton.disabled = true; // O botão fica disabled quando o utilizador acerta a palavra
+      modal.style.display = "flex";
+      document.getElementById("attemptCount").textContent = attempts;
+    } else {
+      var matchedLetters = getMatchedLetters(word, guess);
+      display.textContent = matchedLetters;
+      attemptCount.textContent = attempts;
+
+      guessInput.value = "";
+      guessInput.focus();
+    }
+  }
+});
+
 guessButton.addEventListener("click", function () {
   var guess = guessInput.value.trim();
 
