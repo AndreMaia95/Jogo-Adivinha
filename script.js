@@ -146,6 +146,28 @@ var reset2Button = document.getElementById("reset2Button");
 var attempts = 0;
 var modal = document.getElementById("modal");
 
+const menuButton = document.getElementById("menuButton");
+const menuContent = document.getElementById("menuContent");
+
+menuButton.addEventListener("click", () => {
+  menuContent.style.display =
+    menuContent.style.display === "none" ? "flex" : "none";
+  menuButton.classList.toggle("active");
+  menuButton.style.backgroundColor = menuButton.classList.contains("active")
+    ? "#615458"
+    : "#6e5c62";
+});
+
+document.addEventListener("click", (event) => {
+  if (
+    !menuButton.contains(event.target) &&
+    !menuContent.contains(event.target)
+  ) {
+    menuContent.style.display = "none";
+    menuButton.classList.remove("active");
+    menuButton.style.backgroundColor = "#6e5c62";
+  }
+});
 display.textContent = getHiddenWord(word);
 
 guessInput.addEventListener("keypress", function (event) {

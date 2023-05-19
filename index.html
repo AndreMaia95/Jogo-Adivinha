@@ -2,16 +2,53 @@
 <html>
   <head>
     <title>Tenta Adivinhar</title>
+    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css"
+    />
   </head>
   <body>
     <div class="main-container">
+      <button id="menuButton" class="menu-button">
+        <i style="font-size: 24px" class="mdi mdi-dots-vertical"></i>
+      </button>
+      <div id="menuContent" class="menu-content">
+        <button class="menu-option" id="menu-option-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M11 18h2v-2h-2v2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-14a4 4 0 0 0-4 4h2a2 2 0 0 1 2-2a2 2 0 0 1 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5a4 4 0 0 0-4-4Z"
+            />
+          </svg>
+          <span>Como jogar?</span>
+        </button>
+        <button class="menu-option" id="menu-option-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M12 1.998c5.524 0 10.002 4.478 10.002 10.002c0 5.523-4.478 10-10.002 10c-5.524.001-10-4.477-10-10C1.999 6.476 6.476 1.998 12 1.998Zm0 1.5a8.502 8.502 0 1 0 0 17.003a8.502 8.502 0 0 0 0-17.003Zm-.004 7a.75.75 0 0 1 .744.648l.007.102l.004 5.502a.75.75 0 0 1-1.494.102l-.006-.101l-.004-5.502a.75.75 0 0 1 .75-.75Zm.005-3.497a.999.999 0 1 1 0 1.997a.999.999 0 0 1 0-1.997Z"
+            />
+          </svg>
+          <span>Créditos</span>
+        </button>
+      </div>
       <h1>Tenta adivinhar o país!</h1>
       <div id="display"></div>
       <div class="container-flex">
@@ -25,7 +62,7 @@
       </div>
       <button id="resetButton" style="display: none">Novo Jogo</button>
     </div>
-
+    <p>Developed by <b>André Maia</b>.</p>
     <div id="modal" class="modal">
       <p class="modal-title">Ganhaste!!</p>
       <div class="modal-info">
@@ -39,6 +76,80 @@
       <div class="firework"></div>
       <div class="firework"></div>
       <div class="firework"></div>
+    </div>
+
+    <div id="modal-HowtoPlay" class="modal1">
+      <div class="modal1-container">
+        <button id="closeButton" class="close-button">
+          <i class="mdi mdi-close"></i>
+        </button>
+        <div class="modal1-title">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M11 18h2v-2h-2v2m1-16A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m0-14a4 4 0 0 0-4 4h2a2 2 0 0 1 2-2a2 2 0 0 1 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5a4 4 0 0 0-4-4Z"
+            />
+          </svg>
+          <p>Como Jogar</p>
+        </div>
+        <div class="modal1-text">
+          <p>
+            Descubra o país secreto. Você pode tentar quantas vezes precisar.
+          </p>
+
+          <p>
+            Depois de enviar uma palavra, você poderá visualizar no display se
+            alguma das letras coincidem com a palavra secreta.
+          </p>
+
+          <p>
+            Quando a palavra é descoberta aparece uma mensagem de vitória
+            juntamente com o número de tentativas que usou para tentar descobrir
+            a palavra.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-credits" class="modal2">
+      <div class="modal2-container">
+        <button id="closeButton2" class="close-button">
+          <i class="mdi mdi-close"></i>
+        </button>
+        <div class="modal2-title">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M12 1.998c5.524 0 10.002 4.478 10.002 10.002c0 5.523-4.478 10-10.002 10c-5.524.001-10-4.477-10-10C1.999 6.476 6.476 1.998 12 1.998Zm0 1.5a8.502 8.502 0 1 0 0 17.003a8.502 8.502 0 0 0 0-17.003Zm-.004 7a.75.75 0 0 1 .744.648l.007.102l.004 5.502a.75.75 0 0 1-1.494.102l-.006-.101l-.004-5.502a.75.75 0 0 1 .75-.75Zm.005-3.497a.999.999 0 1 1 0 1.997a.999.999 0 0 1 0-1.997Z"
+            />
+          </svg>
+          <p>Créditos</p>
+        </div>
+        <div class="modal2-text">
+          <p>Inspirado no <b>Contexto</b>.</p>
+
+          <p>
+            Agradecemos a todos os jogadores que tornaram este jogo possível. O
+            vosso apoio e entusiasmo inspiram-nos a continuar a criar
+            experiências divertidas para todos.
+          </p>
+
+          <p>
+            Gostaríamos também de agradecer a todos os que contríbuiram para o
+            desenvolvimento deste jogo pelo seu trabalho árduo e dedicação.
+          </p>
+        </div>
+      </div>
     </div>
 
     <script src="script.js" defer></script>
