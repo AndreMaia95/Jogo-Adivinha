@@ -207,6 +207,7 @@ svg {
 }
 .modal-text {
   color: white;
+  text-align: center;
 }
 .modal-newgame {
   width: 200px;
